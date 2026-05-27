@@ -5,13 +5,14 @@ from sqlalchemy.orm import Mapped, mapped_column
 from app.core.database import Base
 
 
-class Tenant(Base):
-    __tablename__ = "tenants"
+class User(Base):
+    __tablename__ = "users"
 
     id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
-    slug: Mapped[str] = mapped_column(String(63), unique=True, nullable=False)
-    name: Mapped[str] = mapped_column(String(255), nullable=False)
-    schema_name: Mapped[str] = mapped_column(String(63), unique=True, nullable=False)
+    full_name: Mapped[str] = mapped_column(String(255), nullable=False)
+    email: Mapped[str] = mapped_column(String(255), unique=True, nullable=False)
+    hashed_password: Mapped[str] = mapped_column(String, nullable=False)
+    role: Mapped[str] = mapped_column(String(50), default="waiter")  # waiter, admin
     is_active: Mapped[bool] = mapped_column(Boolean, default=True)
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), default=lambda: datetime.now(timezone.utc)
