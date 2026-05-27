@@ -26,12 +26,12 @@ python -m venv .venv
 ## 2. Instalar dependências
 
 ```bash
-pip install fastapi uvicorn[standard] sqlalchemy[asyncio] asyncpg alembic pydantic[email] pydantic-settings python-dotenv
+pip install requirements.txt
 ```
 
 ---
 
-## 3. Arquivo `.env`
+##  Arquivo `.env`
 
 Crie um arquivo `.env` na raiz do projeto com o seguinte conteúdo:
 
@@ -42,32 +42,8 @@ SECRET_KEY=sua_chave_secreta
 
 > Substitua `usuario`, `senha` e `nome_do_banco` pelos dados do seu PostgreSQL.
 
----
 
-## 4. Configurar o Alembic
-
-```bash
-alembic init -t async alembic
-```
-
-Depois edite o `alembic/env.py` para apontar para os seus models e `Base.metadata`, e deixe o `alembic.ini` com a linha de URL em branco:
-
-```ini
-sqlalchemy.url =
-```
-
----
-
-## 5. Aplicar migrations
-
-```bash
-alembic revision --autogenerate -m "initial"
-alembic upgrade head
-```
-
----
-
-## 6. Rodar o servidor
+##  Rodar o servidor
 
 ```bash
 uvicorn app.main:app --reload
