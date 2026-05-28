@@ -20,8 +20,8 @@ class Base(DeclarativeBase):
     pass
 
 
-# --- CONEXÃO DO MONGODB (Banco de Leitura - Adicionado AGORA) ---
-#  usa a variável MONGO_URL que configurou no  .env
+# --- CONEXÃO DO MONGODB (Banco de Leitura - Adicionado) ---
+#  usa a variável MONGO_URL que configurou no .env
 mongo_client = MongoClient(settings.MONGO_URL)
 
 # Cria o acesso direto ao banco de dados de relatórios e dashboards

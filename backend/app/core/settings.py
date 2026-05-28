@@ -9,7 +9,7 @@ class Settings(BaseSettings):
     # Banco de Escrita (Postgres)
     DATABASE_URL: str
     
-    # Banco de Leitura (MongoDB) que adicionamos para os Relatórios
+    # Banco de Leitura (MongoDB) que adiciona para os Relatórios
     MONGO_URL: str = "mongodb://localhost:27017/comanda_facil_leitura"
     
     REDIS_URL: str = "redis://localhost:6379/0"

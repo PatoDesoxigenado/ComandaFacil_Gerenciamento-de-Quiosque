@@ -20,6 +20,7 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
+
 app.add_middleware(TenantMiddleware)
 
 app.include_router(api_router)
