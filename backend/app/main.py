@@ -2,6 +2,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 from app.core.database import engine, Base
+from app.core.tenant import TenantMiddleware
 from app.api.v1.router import api_router
 from app.tenants.models import Tenant
 import logging
@@ -24,6 +25,7 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
+app.add_middleware(TenantMiddleware)
 app.include_router(api_router)
 
 

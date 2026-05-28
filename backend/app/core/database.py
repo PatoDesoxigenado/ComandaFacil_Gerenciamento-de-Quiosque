@@ -4,6 +4,7 @@ from app.core.settings import get_settings
 
 settings = get_settings()
 
+# --- CONEXÃO DO POSTGRESQL ---
 engine = create_async_engine(settings.DATABASE_URL, echo=settings.APP_DEBUG)
 
 AsyncSessionFactory = async_sessionmaker(
