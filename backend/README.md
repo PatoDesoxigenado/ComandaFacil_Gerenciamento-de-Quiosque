@@ -38,6 +38,7 @@ Crie um arquivo `.env` na pasta do backend com as seguintes variaveis:
 ```env
 DATABASE_URL=postgresql+asyncpg://usuario:senha@localhost:5432/nome_do_banco
 JWT_SECRET_KEY=sua_chave_secreta
+APP_DEBUG=true
 ```
 
 > Substitua `usuario`, `senha` e `nome_do_banco` pelos dados do seu PostgreSQL.

@@ -3,7 +3,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.core.deps import get_tenant_db
 from app.tables import service
 from app.tables.schemas import TableCreate, TableRead, TableUpdate
-
+from app.core.deps import get_tenant_db
 router = APIRouter(prefix="/tables", tags=["Tables"])
 
 @router.get("/", response_model=list[TableRead])

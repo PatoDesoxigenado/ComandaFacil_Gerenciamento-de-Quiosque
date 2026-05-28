@@ -1,9 +1,13 @@
 from contextlib import asynccontextmanager
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from fastapi.responses import JSONResponse
 from app.core.database import engine, Base
-from app.core.tenant import TenantMiddleware
 from app.api.v1.router import api_router
 from app.tenants.models import Tenant
+import logging
+import traceback
+
+logging.basicConfig(level=logging.DEBUG)
 
 
 @asynccontextmanager
@@ -20,9 +24,13 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-app.add_middleware(TenantMiddleware)
-
 app.include_router(api_router)
+
+
+@app.exception_handler(Exception)
+async def global_exception_handler(request: Request, exc: Exception):
+    traceback.print_exc()
+    return JSONResponse(status_code=500, content={"detail": str(exc)})
 
 
 @app.get("/health")
