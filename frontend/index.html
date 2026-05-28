@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ComandaFácil - Painel do Quiosque</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ciano: '#06b6d4',    /* cyan-500 */
+                        'ciano-escuro': '#0891b2', /* cyan-600 */
+                        laranja: '#f97316',  /* orange-500 */
+                        branco: '#ffffff',
+                        fundo: '#f8fafc'     /* slate-50 para um off-white que destaca os cards */
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-fundo text-slate-800 font-sans flex h-screen overflow-hidden">
+
+    <aside class="w-64 bg-ciano text-branco flex flex-col shadow-xl z-10">
+        <div class="p-6 text-center border-b border-cyan-400">
+            <h1 class="text-2xl font-bold tracking-wider">ComandaFácil</h1>
+            <p class="text-sm opacity-80 mt-1">Quiosque Praia</p>
+        </div>
+        
+        <nav class="flex-1 p-4 space-y-2 mt-4">
+            <a href="#" class="block py-3 px-4 rounded-lg bg-branco text-ciano font-bold shadow-sm transition">
+                📋 Pedidos Ativos
+            </a>
+            <a href="#" class="block py-3 px-4 rounded-lg hover:bg-ciano-escuro transition">
+                🪑 Mesas
+            </a>
+            <a href="#" class="block py-3 px-4 rounded-lg hover:bg-ciano-escuro transition">
+                🍔 Produtos
+            </a>
+        </nav>
+
+        <div class="p-5 border-t border-cyan-400 bg-ciano-escuro">
+            <p class="text-xs opacity-75 uppercase tracking-wider mb-1">Logado como</p>
+            <p class="font-bold text-lg">João Gomes</p>
+            <span class="inline-block px-2 py-1 bg-cyan-400 text-xs rounded mt-1">Garçom</span>
+        </div>
+    </aside>
+
+    <main class="flex-1 flex flex-col h-screen overflow-y-auto">
+        
+        <header class="bg-branco shadow-sm p-6 flex justify-between items-center sticky top-0 z-0">
+            <div>
+                <h2 class="text-2xl font-bold text-slate-700">Visão Geral</h2>
+                <p class="text-sm text-slate-500 mt-1">Acompanhe as comandas em tempo real.</p>
+            </div>
+            <button class="bg-laranja hover:bg-orange-600 text-branco px-6 py-3 rounded-lg font-bold shadow-md transition transform hover:-translate-y-0.5 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+                </svg>
+                Novo Pedido
+            </button>
+        </header>
+
+        <div class="p-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                
+                <div class="bg-branco p-5 rounded-xl shadow-sm border border-slate-100 border-l-4 border-l-laranja flex flex-col justify-between hover:shadow-md transition">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-lg font-bold text-ciano">Mesa 04</h3>
+                            <p class="text-xs text-slate-400 font-medium">Comanda #1042</p>
+                        </div>
+                        <span class="bg-orange-100 text-laranja text-xs font-bold px-2 py-1 rounded">Em Preparo</span>
+                    </div>
+                    <ul class="text-sm text-slate-600 mb-6 space-y-2 flex-1">
+                        <li class="flex justify-between"><span>2x Porção de Fritas</span></li>
+                        <li class="flex justify-between"><span>1x Suco Natural</span></li>
+                    </ul>
+                    <div class="border-t border-slate-100 pt-3 flex justify-between items-center mt-auto">
+                        <span class="font-bold text-slate-800">R$ 54,90</span>
+                        <button class="text-ciano hover:text-ciano-escuro text-sm font-bold">Ver detalhes &rarr;</button>
+                    </div>
+                </div>
+
+                <div class="bg-branco p-5 rounded-xl shadow-sm border border-slate-100 border-l-4 border-l-cyan-300 flex flex-col justify-between hover:shadow-md transition">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-lg font-bold text-ciano">Mesa 12</h3>
+                            <p class="text-xs text-slate-400 font-medium">Comanda #1043</p>
+                        </div>
+                        <span class="bg-cyan-50 text-ciano text-xs font-bold px-2 py-1 rounded border border-cyan-100">Aberto</span>
+                    </div>
+                    <ul class="text-sm text-slate-600 mb-6 space-y-2 flex-1">
+                        <li class="flex justify-between"><span>4x Cerveja Artesanal</span></li>
+                        <li class="flex justify-between"><span>1x Isca de Peixe</span></li>
+                    </ul>
+                    <div class="border-t border-slate-100 pt-3 flex justify-between items-center mt-auto">
+                        <span class="font-bold text-slate-800">R$ 112,00</span>
+                        <button class="text-ciano hover:text-ciano-escuro text-sm font-bold">Ver detalhes &rarr;</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
