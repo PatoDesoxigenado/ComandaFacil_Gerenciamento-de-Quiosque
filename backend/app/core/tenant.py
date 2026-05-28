@@ -1,4 +1,3 @@
-import os  # Adicionado: Importa a ferramenta que cria pastas no seu Windows/Linux
 from dataclasses import dataclass
 from fastapi import HTTPException
 from starlette.middleware.base import BaseHTTPMiddleware
@@ -28,13 +27,6 @@ class TenantMiddleware(BaseHTTPMiddleware):
         tenant = await self._resolve_tenant(slug)
         if tenant is None:
             raise HTTPException(status_code=404, detail=f"Tenant '{slug}' nao encontrado")
-
-        # Defini que o caminho da pasta: backend/logs/nome_do_quiosque/
-        log_dir = os.path.join("logs", slug)
-        
-        #"Se essa pasta ainda não existir no PC, crie ela"
-        if not os.path.exists(log_dir):
-            os.makedirs(log_dir)
 
         request.state.tenant = TenantContext(
             tenant_id=tenant["id"],
